@@ -1,0 +1,16 @@
+{%extends 'parma/base.html'%}
+
+{%block content%}
+<h1>{{title}}</h1>
+
+<ul>
+    {%for p in people%}
+    <li>
+        <p>{{p.FirstName}}</p>
+        <p>{{p.SecondName}}</p>
+        <hr>
+    </li>
+    {%endfor%}
+</ul>
+
+{%endblock%}

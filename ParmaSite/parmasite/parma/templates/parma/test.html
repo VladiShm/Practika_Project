@@ -1,0 +1,13 @@
+{%block content%}
+<h1>{{Test}}</h1>
+
+<ul>
+    {%for q in questions%}
+    <li>
+        <p>{{q.title}}</p>
+        <hr>
+    </li>
+    {%endfor%}
+</ul>
+
+{%endblock%}
