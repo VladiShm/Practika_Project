@@ -20,7 +20,7 @@ class QuestionAdmin(admin.ModelAdmin):
     list_display = ('title', 'date_published', 'is_active')
     inlines = [AnswerInline]
 
-
+admin.site.register(Test)
 
 admin.site.register(Question, QuestionAdmin)
 

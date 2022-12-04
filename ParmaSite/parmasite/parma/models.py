@@ -47,3 +47,13 @@ class Answer(models.Model):
     class Meta:
         verbose_name = 'Ответ'
         verbose_name_plural = 'Ответы'
+
+class Test(models.Model):
+    test_name = models.CharField(max_length=200, verbose_name="Имя теста")
+    q1 = models.ManyToManyField(Question)
+    def __str__(self):
+        return self.test_name
+
+    class Meta:
+        verbose_name = 'Тест'
+        verbose_name_plural = 'Тесты'
