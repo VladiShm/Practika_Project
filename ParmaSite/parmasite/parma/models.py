@@ -10,7 +10,7 @@ class Person(models.Model):
     Departament = models.CharField(max_length=100, verbose_name="Департамент")
     Sucsess = models.IntegerField(verbose_name = "Успешность прохождения теста в %")
     Date_finish = models.DateTimeField(verbose_name="Дата завершения теста", default=datetime.datetime.now())
-    Image = models.ImageField(null = True, blank = False, upload_to = "images/", verbose_name = "Визуальное представление статистики")
+    Image = models.ImageField(null = True, blank = False, upload_to = "static/", verbose_name = "Визуальное представление статистики")
 
 
     def __str__(self):
@@ -20,6 +20,7 @@ class Person(models.Model):
         verbose_name = "Статистика"
         verbose_name_plural = "Статистика"
         ordering = ['FirstName', 'SecondName', 'LastName']
+
 
 
 class Question(models.Model):

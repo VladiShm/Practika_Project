@@ -1,11 +1,13 @@
 from django.contrib import admin
 from .models import *
-
+from django.utils.safestring import mark_safe
 
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('SecondName', 'FirstName', 'LastName', 'Departament', 'Image')
 
     search_fields = ('SecondName', 'FirstName', 'LastName')
+    def get_image(self, obj):
+        return mark_safe()
 
 admin.site.register(Person, PersonAdmin)
 
@@ -21,7 +23,10 @@ class QuestionAdmin(admin.ModelAdmin):
     search_fields =('title', 'date_published',)
     inlines = [AnswerInline]
 
-admin.site.register(Test)
+class TestAdmin(admin.ModelAdmin):
+    search_fields = ('test_name',)
+
+admin.site.register(Test, TestAdmin)
 
 admin.site.register(Question, QuestionAdmin)
 
