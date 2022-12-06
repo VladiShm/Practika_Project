@@ -3,16 +3,17 @@ from .models import *
 from django.utils.safestring import mark_safe
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('SecondName', 'FirstName', 'LastName', 'Departament', 'Image')
+    list_display = ('SecondName', 'FirstName', 'LastName', 'Departament', )
 
     search_fields = ('SecondName', 'FirstName', 'LastName')
-    def get_image(self, obj):
-        return mark_safe()
+
 
 admin.site.register(Person, PersonAdmin)
 
 admin.site.site_title = 'Личный кабинет администратора'
 admin.site.site_header = 'Личный кабинет администратора'
+
+
 
 class AnswerInline(admin.TabularInline):
     model = Answer

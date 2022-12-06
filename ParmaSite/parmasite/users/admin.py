@@ -6,8 +6,7 @@ from django.db import models
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('SecondName', 'FirstName',)
+    list_display = ('username', 'first_name','last_name', 'email')
 
-    search_fields = ('SecondName', 'FirstName', 'LastName')
 
-admin.site.register(User)
+admin.site.register(User, UserAdmin)
