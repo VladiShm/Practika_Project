@@ -6,7 +6,6 @@ import datetime
 class Person(models.Model):
     FirstName = models.CharField(max_length=100, verbose_name="Имя")
     SecondName = models.CharField(max_length=100, verbose_name="Фамилия")
-    LastName = models.CharField(max_length=100, verbose_name="Отчество")
     Departament = models.CharField(max_length=100, verbose_name="Департамент")
     Sucsess = models.IntegerField(verbose_name = "Успешность прохождения теста в %")
     Date_finish = models.DateTimeField(verbose_name="Дата завершения теста", default=datetime.datetime.now())
@@ -17,7 +16,7 @@ class Person(models.Model):
     class Meta:
         verbose_name = "Статистика"
         verbose_name_plural = "Статистика"
-        ordering = ['FirstName', 'SecondName', 'LastName']
+        ordering = ['FirstName', 'SecondName',]
 
 
 
@@ -50,7 +49,7 @@ class Answer(models.Model):
 
 class Test(models.Model):
     test_name = models.CharField(max_length=200, verbose_name="Имя теста")
-    q1 = models.ManyToManyField(Question)
+    q1 = models.ManyToManyField(Question, verbose_name="Вопросы")
 
 
     def __str__(self):
@@ -63,7 +62,7 @@ class Test(models.Model):
 
 
 class DiscriptionQuestion(models.Model):
-    Name_Question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name = "Название теста")
+    Name_Question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name = "Вопрос")
     Discription = models.CharField(max_length = 500, verbose_name = "Описание ответа на вопрос теста")
 
 
