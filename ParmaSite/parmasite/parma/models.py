@@ -8,16 +8,17 @@ class Person(models.Model):
     SecondName = models.CharField(max_length=100, verbose_name="Фамилия")
     LastName = models.CharField(max_length=100, verbose_name="Отчество")
     Departament = models.CharField(max_length=100, verbose_name="Департамент")
-    Login = models.CharField(max_length=100, verbose_name='Логин')
-    Password = models.CharField(max_length=100, verbose_name='Пароль')
-    success = models.BooleanField(default=False)
+    Sucsess = models.IntegerField(verbose_name = "Успешность прохождения теста в %")
+    Date_finish = models.DateTimeField(verbose_name="Дата завершения теста", default=datetime.datetime.now())
+    Image = models.ImageField(null = True, blank = False, upload_to = "images/", verbose_name = "Визуальное представление статистики")
+
 
     def __str__(self):
         return self.FirstName
 
     class Meta:
-        verbose_name = "сотрудника компании"
-        verbose_name_plural = "Сотрудники компании"
+        verbose_name = "Статистика"
+        verbose_name_plural = "Статистика"
         ordering = ['FirstName', 'SecondName', 'LastName']
 
 
@@ -31,12 +32,11 @@ class Question(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Вопрос'
-        verbose_name_plural = 'Вопросы'
+        verbose_name = 'Добавить новый вопрос'
+        verbose_name_plural = 'Добавить новый вопрос'
 
 
 class Answer(models.Model):
-    """Вариант ответа на вопрос"""
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer = models.CharField(max_length=200, verbose_name="Ответ")
     votes = models.IntegerField(verbose_name="Голосов", default=0)
@@ -51,9 +51,23 @@ class Answer(models.Model):
 class Test(models.Model):
     test_name = models.CharField(max_length=200, verbose_name="Имя теста")
     q1 = models.ManyToManyField(Question)
+
+
     def __str__(self):
         return self.test_name
 
     class Meta:
-        verbose_name = 'Тест'
-        verbose_name_plural = 'Тесты'
+        verbose_name = 'Добавить новый тест'
+        verbose_name_plural = 'Добавить новый тест'
+
+
+
+class DiscriptionQuestion(models.Model):
+    Name_Question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name = "Название теста")
+    Discription = models.CharField(max_length = 500, verbose_name = "Описание ответа на вопрос теста")
+
+
+
+    class Meta:
+        verbose_name = 'Комментарии к правильному ответу на вопрос теста'
+        verbose_name_plural = 'Комментарии к правильному ответу на вопрос теста'

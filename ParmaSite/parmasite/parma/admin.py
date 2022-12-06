@@ -3,11 +3,11 @@ from .models import *
 
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('SecondName', 'FirstName', 'LastName', 'Departament')
+    list_display = ('SecondName', 'FirstName', 'LastName', 'Departament', 'Image')
 
     search_fields = ('SecondName', 'FirstName', 'LastName')
 
-#admin.site.register(Person, PersonAdmin)
+admin.site.register(Person, PersonAdmin)
 
 admin.site.site_title = 'Личный кабинет администратора'
 admin.site.site_header = 'Личный кабинет администратора'
@@ -18,11 +18,19 @@ class AnswerInline(admin.TabularInline):
 
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ('title', 'date_published', 'is_active')
+    search_fields =('title', 'date_published',)
     inlines = [AnswerInline]
 
 admin.site.register(Test)
 
 admin.site.register(Question, QuestionAdmin)
+
+class DiscriptionQuestionAdmin(admin.ModelAdmin):
+    list_display = ('Name_Question', 'Discription')
+    search_fields = ('Name_Question',)
+
+
+admin.site.register(DiscriptionQuestion, DiscriptionQuestionAdmin)
 
 class MyAdmin(admin.ModelAdmin):
     def log_addition(self, *args):
