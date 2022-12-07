@@ -9,7 +9,7 @@ class User(AbstractUser):
 
     USERNAME_FIELD = 'username'
     class Meta:
-        verbose_name = "Добавить пользователя"
+        verbose_name = "пользователя"
         verbose_name_plural = "Добавить пользователя"
 
 

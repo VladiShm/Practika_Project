@@ -14,7 +14,7 @@ class Person(models.Model):
         return self.FirstName
 
     class Meta:
-        verbose_name = "Статистика"
+        verbose_name = "статистику"
         verbose_name_plural = "Статистика"
         ordering = ['FirstName', 'SecondName',]
 
@@ -31,8 +31,8 @@ class Question(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Добавить новый вопрос'
-        verbose_name_plural = 'Добавить новый вопрос'
+        verbose_name = 'новый вопрос'
+        verbose_name_plural = 'новый вопрос'
 
 
 class Answer(models.Model):
@@ -56,8 +56,8 @@ class Test(models.Model):
         return self.test_name
 
     class Meta:
-        verbose_name = 'Добавить новый тест'
-        verbose_name_plural = 'Добавить новый тест'
+        verbose_name = 'новый тест'
+        verbose_name_plural = 'новый тест'
 
 
 
@@ -68,5 +68,5 @@ class DiscriptionQuestion(models.Model):
 
 
     class Meta:
-        verbose_name = 'Комментарии к правильному ответу на вопрос теста'
-        verbose_name_plural = 'Комментарии к правильному ответу на вопрос теста'
+        verbose_name = 'комментарии к правильному ответу на вопрос теста'
+        verbose_name_plural = 'комментарии к правильному ответу на вопрос теста'
