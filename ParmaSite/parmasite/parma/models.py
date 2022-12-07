@@ -3,6 +3,7 @@ from django.db import models
 import datetime
 
 
+
 class Person(models.Model):
     FirstName = models.CharField(max_length=100, verbose_name="Имя")
     SecondName = models.CharField(max_length=100, verbose_name="Фамилия")
@@ -26,6 +27,7 @@ class Question(models.Model):
     title = models.CharField(max_length=400, verbose_name="Вопрос")
     date_published = models.DateTimeField(verbose_name="Дата публикации", default=datetime.datetime.now())
     is_active = models.BooleanField(verbose_name="Опубликован")
+    image = models.ImageField('Загрузите вспомогательное изображение для вопроса', upload_to='static/')
 
     def __str__(self):
         return self.title
@@ -52,6 +54,7 @@ class Test(models.Model):
     q1 = models.ManyToManyField(Question, verbose_name="Вопросы")
 
 
+
     def __str__(self):
         return self.test_name
 
@@ -64,6 +67,7 @@ class Test(models.Model):
 class DiscriptionQuestion(models.Model):
     Name_Question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name = "Вопрос")
     Discription = models.CharField(max_length = 500, verbose_name = "Описание ответа на вопрос теста")
+    image = models.ImageField('Загрузите изображение - пояснение к вопросу', upload_to='static/')
 
 
 

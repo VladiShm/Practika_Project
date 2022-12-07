@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'parma.apps.ParmaConfig',
     'debug_toolbar',
     'users',
+    'import_export',
 ]
 
 MIDDLEWARE = [

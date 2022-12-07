@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import *
-from django.utils.safestring import mark_safe
+
 
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('SecondName', 'FirstName', 'Departament','Sucsess', 'Date_finish' )
