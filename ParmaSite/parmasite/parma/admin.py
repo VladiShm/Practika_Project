@@ -1,8 +1,17 @@
 from django.contrib import admin
 from .models import *
+from import_export import fields
+from import_export.admin import ImportExportActionModelAdmin
+from import_export import resources
+from import_export.widgets import ForeignKeyWidget
+
+class PersonResource(resources.ModelResource):
+    class Meta:
+        model = Person
 
 
-class PersonAdmin(admin.ModelAdmin):
+class PersonAdmin(ImportExportActionModelAdmin):
+    resource_class = PersonResource
     list_display = ('SecondName', 'FirstName', 'Departament','Sucsess', 'Date_finish' )
 
     search_fields = ('SecondName', 'FirstName', )

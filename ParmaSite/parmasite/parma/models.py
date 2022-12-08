@@ -11,6 +11,7 @@ class Person(models.Model):
     Sucsess = models.IntegerField(verbose_name = "Успешность прохождения теста в %")
     Date_finish = models.DateTimeField(verbose_name="Дата завершения теста", default=datetime.datetime.now())
 
+
     def __str__(self):
         return self.FirstName
 
@@ -28,6 +29,7 @@ class Question(models.Model):
     date_published = models.DateTimeField(verbose_name="Дата публикации", default=datetime.datetime.now())
     is_active = models.BooleanField(verbose_name="Опубликован")
     image = models.ImageField('Загрузите вспомогательное изображение для вопроса', upload_to='static/')
+    video = models.FileField('Загрузите вспомогательное видео для вопроса', upload_to='static/')
 
     def __str__(self):
         return self.title
@@ -68,6 +70,8 @@ class DiscriptionQuestion(models.Model):
     Name_Question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name = "Вопрос")
     Discription = models.CharField(max_length = 500, verbose_name = "Описание ответа на вопрос теста")
     image = models.ImageField('Загрузите изображение - пояснение к вопросу', upload_to='static/')
+    video = models.FileField('Загрузите видео - пояснение к вопросу', upload_to='static/')
+
 
 
 
